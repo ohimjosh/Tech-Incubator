@@ -1,13 +1,14 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import fire from "./fire";
+import Login from "./Login";
 
 const App = () => {
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [emailPassword, setPasswordError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
 
   const clearInputs = () => {
@@ -64,7 +65,7 @@ const App = () => {
   const authListener = () => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
-        clearInputs()
+        clearInputs();
         setUser(user);
       } else {
         setUser("");
@@ -78,7 +79,18 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>My app</h1>
+      <Login
+        email={email}
+        setEmail={setEmail}
+        password={password}
+        setPassword={setPassword}
+        handleLogin={handleLogin}
+        handleSignUp={handleSignUp}
+        hasAccount={hasAccount}
+        setHasAccount={setHasAccount}
+        emailError={emailError}
+        passwordError={setPasswordError}
+      />
     </div>
   );
 };
