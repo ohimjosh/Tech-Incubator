@@ -1,8 +1,8 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import app from "./fire";
+import fire from "./fire";
 
-function App() {
+const App = () => {
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,8 +10,19 @@ function App() {
   const [emailPassword, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
 
-  function handleLogin() {
-    app
+  const clearInputs = () => {
+    setEmail("");
+    setPassword("");
+  };
+
+  const clearErrors = () => {
+    setEmailError("");
+    setPasswordError("");
+  };
+
+  const handleLogin = () => {
+    clearErrors();
+    fire
       .auth()
       .signInWithEmailAndPassword(email, password)
       .catch((err) => {
@@ -26,10 +37,11 @@ function App() {
             break;
         }
       });
-  }
+  };
 
-  function handleSignUp() {
-    app
+  const handleSignUp = () => {
+    clearErrors();
+    fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .catch((err) => {
@@ -43,21 +55,32 @@ function App() {
             break;
         }
       });
-  }
+  };
 
+  const handleLogOut = () => {
+    fire.auth().signOut();
+  };
 
-  
+  const authListener = () => {
+    fire.auth().onAuthStateChanged((user) => {
+      if (user) {
+        clearInputs()
+        setUser(user);
+      } else {
+        setUser("");
+      }
+    });
+  };
 
-
-
-
-
+  useEffect(() => {
+    authListener();
+  }, []);
 
   return (
     <div className="App">
       <h1>My app</h1>
     </div>
   );
-}
+};
 
 export default App;
