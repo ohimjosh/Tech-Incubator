@@ -1,1 +1,1 @@
-# tech-Incubator
+# tech-incubator
