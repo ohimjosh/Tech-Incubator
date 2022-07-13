@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
+
 import fire from "./fire";
 import Login from "./pages/Login";
 import Hero from "./pages/Hero";
@@ -76,6 +77,8 @@ const App = () => {
     });
   };
 
+
+
   useEffect(() => {
     authListener();
   }, [])
@@ -98,6 +101,10 @@ const App = () => {
           passwordError={passwordError}
         />
       )}
+
+
+
+
     </div>
   );
 };
