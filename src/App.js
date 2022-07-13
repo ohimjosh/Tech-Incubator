@@ -37,7 +37,7 @@ const App = () => {
           case "auth/wrong-password":
             setPasswordError(err.message);
             break;
-            default:
+          default:
         }
       });
   };
@@ -65,23 +65,20 @@ const App = () => {
     fire.auth().signOut();
   };
 
+  const authListener = () => {
+    fire.auth().onAuthStateChanged((user) => {
+      if (user) {
+        clearInputs();
+        setUser(user);
+      } else {
+        setUser("");
+      }
+    });
+  };
 
   useEffect(() => {
-    const authListener = () => {
-      fire.auth().onAuthStateChanged((user) => {
-        if (user) {
-          clearInputs();
-          setUser(user);
-        } else {
-          setUser("");
-        }
-      })
-    }
-
-
     authListener();
   }, [])
-
 
   return (
     <div className="App">
