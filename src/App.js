@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import app from "./fire";
+import fire from "./fire";
 import Login from "./Login";
 import Hero from "./Hero";
 
@@ -24,7 +24,7 @@ const App = () => {
 
   const handleLogin = () => {
     clearErrors();
-    app
+    fire
       .auth()
       .signInWithEmailAndPassword(email, password)
       .catch((err) => {
@@ -44,7 +44,7 @@ const App = () => {
 
   const handleSignUp = () => {
     clearErrors();
-    app
+    fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .catch((err) => {
@@ -62,13 +62,13 @@ const App = () => {
   };
 
   const handleLogOut = () => {
-    app.auth().signOut();
+    fire.auth().signOut();
   };
 
 
   useEffect(() => {
     const authListener = () => {
-      app.auth().onAuthStateChanged((user) => {
+      fire.auth().onAuthStateChanged((user) => {
         if (user) {
           clearInputs();
           setUser(user);

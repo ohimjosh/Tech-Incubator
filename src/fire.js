@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app"
+import firebase from 'firebase/compat/app'
+import "firebase/compat/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -10,10 +11,12 @@ const firebaseConfig = {
   projectId: "login-22c52",
   storageBucket: "login-22c52.appspot.com",
   messagingSenderId: "826234056573",
-  appId: "1:826234056573:web:07767c0b1549d1b9ffe614",
+  appId: "1:826234056573:web:07767c0b1549d1b9ffe614"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const fire = firebase.initializeApp(firebaseConfig);
 
-export default app;
+export default fire;
+
+
