@@ -1,7 +1,8 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import fire from "./fire";
+import app from "./fire";
 import Login from "./Login";
+import Hero from "./Hero";
 
 const App = () => {
   const [user, setUser] = useState("");
@@ -23,7 +24,7 @@ const App = () => {
 
   const handleLogin = () => {
     clearErrors();
-    fire
+    app
       .auth()
       .signInWithEmailAndPassword(email, password)
       .catch((err) => {
@@ -36,13 +37,14 @@ const App = () => {
           case "auth/wrong-password":
             setPasswordError(err.message);
             break;
+            default:
         }
       });
   };
 
   const handleSignUp = () => {
     clearErrors();
-    fire
+    app
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .catch((err) => {
@@ -54,43 +56,51 @@ const App = () => {
           case "auth/weak-password":
             setPasswordError(err.message);
             break;
+          default:
         }
       });
   };
 
   const handleLogOut = () => {
-    fire.auth().signOut();
+    app.auth().signOut();
   };
 
-  const authListener = () => {
-    fire.auth().onAuthStateChanged((user) => {
-      if (user) {
-        clearInputs();
-        setUser(user);
-      } else {
-        setUser("");
-      }
-    });
-  };
 
   useEffect(() => {
+    const authListener = () => {
+      app.auth().onAuthStateChanged((user) => {
+        if (user) {
+          clearInputs();
+          setUser(user);
+        } else {
+          setUser("");
+        }
+      })
+    }
+
+
     authListener();
-  }, []);
+  }, [])
+
 
   return (
     <div className="App">
-      <Login
-        email={email}
-        setEmail={setEmail}
-        password={password}
-        setPassword={setPassword}
-        handleLogin={handleLogin}
-        handleSignUp={handleSignUp}
-        hasAccount={hasAccount}
-        setHasAccount={setHasAccount}
-        emailError={emailError}
-        passwordError={setPasswordError}
-      />
+      {user ? (
+        <Hero handleLogOut={handleLogOut} />
+      ) : (
+        <Login
+          email={email}
+          setEmail={setEmail}
+          password={password}
+          setPassword={setPassword}
+          handleLogin={handleLogin}
+          handleSignUp={handleSignUp}
+          hasAccount={hasAccount}
+          setHasAccount={setHasAccount}
+          emailError={emailError}
+          passwordError={passwordError}
+        />
+      )}
     </div>
   );
 };
