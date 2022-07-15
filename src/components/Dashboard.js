@@ -30,12 +30,16 @@ export default function Dashboard() {
           <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
             Update Profile
           </Link>
+          <Link to="/task" className="btn btn-primary w-100 mt-3">
+            Task
+          </Link>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
         <Button variant="link" onClick={handleLogout}>
           Log Out
         </Button>
+        
       </div>
     </>
   );

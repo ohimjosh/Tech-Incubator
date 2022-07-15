@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UpdateProfile from "./UpdateProfile";
+import Task from "./Task";
 
 const App = () => {
   return (
@@ -32,6 +33,14 @@ const App = () => {
                 element={
                   <PrivateRoute>
                     <UpdateProfile />
+                  </PrivateRoute>
+                }
+              ></Route>
+               <Route
+                path="/task"
+                element={
+                  <PrivateRoute>
+                    <Task />
                   </PrivateRoute>
                 }
               ></Route>
