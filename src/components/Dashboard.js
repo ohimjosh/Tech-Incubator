@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, Alert } from "react-bootstrap";
+import { Button, Card, Alert, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
@@ -11,36 +11,41 @@ export default function Dashboard() {
   async function handleLogout() {
     setError("");
     try {
-      await logout()
+      await logout();
       navigate("/login");
-    } catch(err) {
-      setError("Failed to logout")
-      
+    } catch (err) {
+      setError("Failed to logout");
     }
   }
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong>
-          {currentUser.email}
-          <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
-            Update Profile
-          </Link>
-          <Link to="/task" className="btn btn-primary w-100 mt-3">
-            Task
-          </Link>
-        </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
-        <Button variant="link" onClick={handleLogout}>
-          Log Out
-        </Button>
-        
-      </div>
+      <Container
+        className="d-flex align-items-center justify-content-center"
+        style={{ minHeight: "100vh" }}
+      >
+        <div className="w-100" style={{ maxWidth: "400px" }}>
+          <Card>
+            <Card.Body>
+              <h2 className="text-center mb-4">Profile</h2>
+              {error && <Alert variant="danger">{error}</Alert>}
+              <strong>Email:</strong>
+              {currentUser.email}
+              <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
+                Update Profile
+              </Link>
+              <Link to="/task" className="btn btn-primary w-100 mt-3">
+                Task
+              </Link>
+            </Card.Body>
+          </Card>
+          <div className="w-100 text-center mt-2">
+            <Button variant="link" onClick={handleLogout}>
+              Log Out
+            </Button>
+          </div>
+        </div>
+      </Container>
     </>
   );
 }

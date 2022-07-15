@@ -12,46 +12,39 @@ import Task from "./Task";
 
 const App = () => {
   return (
-    <Container
-      className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh" }}
-    >
-      <div className="w-100" style={{ maxWidth: "400px" }}>
-        <Router>
-          <AuthProvider>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <PrivateRoute>
-                    <Dashboard />
-                  </PrivateRoute>
-                }
-              ></Route>
-              <Route
-                path="/update-profile"
-                element={
-                  <PrivateRoute>
-                    <UpdateProfile />
-                  </PrivateRoute>
-                }
-              ></Route>
-               <Route
-                path="/task"
-                element={
-                  <PrivateRoute>
-                    <Task />
-                  </PrivateRoute>
-                }
-              ></Route>
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-            </Routes>
-          </AuthProvider>
-        </Router>
-      </div>
-    </Container>
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/update-profile"
+            element={
+              <PrivateRoute>
+                <UpdateProfile />
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/task"
+            element={
+              <PrivateRoute>
+                <Task />
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+        </Routes>
+      </AuthProvider>
+    </Router>
   );
 };
 export default App;
