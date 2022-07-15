@@ -6,6 +6,7 @@ import "./Task.css";
 
 export default function Task() {
   const [title, setTitle] = useState("");
+  const [company, setCompany] = useState("");
   const [postText, setPostText] = useState("");
 
   const postCollectionRef = collection(db, "posts");
@@ -14,6 +15,7 @@ export default function Task() {
   const createPost = async () => {
     await addDoc(postCollectionRef, {
       title,
+      company,
       postText,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
     });
@@ -30,6 +32,15 @@ export default function Task() {
             placeholder="Title..."
             onChange={(event) => {
               setTitle(event.target.value);
+            }}
+          />
+        </div>
+        <div className="inputGp">
+          <label>Company:</label>
+          <input
+            placeholder="Company..."
+            onChange={(event) => {
+              setCompany(event.target.value);
             }}
           />
         </div>
