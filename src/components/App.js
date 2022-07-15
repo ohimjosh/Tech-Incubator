@@ -9,6 +9,7 @@ import ForgotPassword from "./ForgotPassword";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UpdateProfile from "./UpdateProfile";
 import Task from "./Task";
+import PostBoard from "./PostBoard";
 
 const App = () => {
   return (
@@ -36,6 +37,14 @@ const App = () => {
             element={
               <PrivateRoute>
                 <Task />
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/post-board"
+            element={
+              <PrivateRoute>
+                <PostBoard />
               </PrivateRoute>
             }
           ></Route>
