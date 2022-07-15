@@ -39,7 +39,7 @@ function PostBoard() {
                     deletePost(post.id);
                   }}
                 >
-                  Delete
+                  🗑
                 </button>
               </div>
             </div>
