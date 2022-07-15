@@ -7,6 +7,7 @@ import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import UpdateProfile from "./UpdateProfile";
 
 const App = () => {
   return (
@@ -23,6 +24,14 @@ const App = () => {
                 element={
                   <PrivateRoute>
                     <Dashboard />
+                  </PrivateRoute>
+                }
+              ></Route>
+              <Route
+                path="/update-profile"
+                element={
+                  <PrivateRoute>
+                    <UpdateProfile />
                   </PrivateRoute>
                 }
               ></Route>
