@@ -8,7 +8,8 @@ body {
 
 .w-100 {
   background-color: #2d2d30;
-  border-radius: 10%;
+  color: white;
+  background-color: transparent;
 }
 
 div.card {
@@ -37,6 +38,8 @@ a:link {
 a {
     color: white !important;
     text-decoration: none;
+    background-color: ;
   }
+
 
 

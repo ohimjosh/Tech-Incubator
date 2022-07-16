@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
+import { Link } from "react-router-dom";
 import "./Task.css";
 
 function PostBoard() {
@@ -48,6 +49,7 @@ function PostBoard() {
           </div>
         );
       })}
+      <Link to="/">Home</Link>
     </div>
   );
 }

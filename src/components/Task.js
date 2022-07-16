@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
+import { Link } from "react-router-dom";
 import "./Task.css";
 
 export default function Task() {
@@ -10,7 +11,7 @@ export default function Task() {
   const [postText, setPostText] = useState("");
 
   const postCollectionRef = collection(db, "posts");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const createPost = async () => {
     await addDoc(postCollectionRef, {
@@ -19,7 +20,7 @@ export default function Task() {
       postText,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
     });
-    navigate("/")
+    navigate("/");
   };
 
   return (
@@ -54,6 +55,9 @@ export default function Task() {
           ></textarea>
         </div>
         <button onClick={createPost}> Submit Post</button>
+        <button onClick={createPost}>
+          <Link to="/">Cancel</Link>
+        </button>
       </div>
     </div>
   );
