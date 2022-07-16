@@ -35,7 +35,10 @@ export default function Dashboard() {
                 Update Profile
               </Link>
               <Link to="/task" className="btn btn-primary w-100 mt-3">
-                Task
+                Create Post
+              </Link>
+              <Link to="/post-board" className="btn btn-primary w-100 mt-3">
+                Post Board
               </Link>
             </Card.Body>
           </Card>
