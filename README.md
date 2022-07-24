@@ -6,6 +6,13 @@
 
 The Tech Incubator company case is a project where I learned how to create a CRUD application while also using firebase as a backend. This project includes login authentication where users can sign up for an account, sign in, and recover password through forget password. Upon successfully logging in users can read task assigned by companies and post their own task.
 
+## Tools
+ * ReactJS
+ * Bootstrap 5
+ * React Router
+ * Firebase
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
