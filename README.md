@@ -1,5 +1,11 @@
 
 ![techIncubator](https://user-images.githubusercontent.com/55722392/179372996-28478822-a1b6-4f63-8141-15ba36ed0c01.gif)
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+The Tech Incubator company case is a project where I learned how to create a CRUD application. This project includes login authentication where users can sign up for an account, sign in, and recover password through forget password. Upon successfully logging in users can read task assigned by companies and post their own task.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
